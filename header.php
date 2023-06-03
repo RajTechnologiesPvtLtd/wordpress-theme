@@ -1,32 +1,23 @@
-<!doctype html>
+<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 
 <head>
-    <!-- Required meta tags -->
-    <meta charset="<?php bloginfo('charset'); ?>">
-    
-    <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+  <!-- Required meta tags -->
+  <meta charset="<?php bloginfo('charset'); ?>">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="profile" href="http://gmpg.org/xfn/11">
-
-    <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-
-    <?php wp_head(); ?>
+  <meta http-equiv="Content-Type" content="<?php bloginfo('html_type'); ?>; charset=<?php bloginfo('charset'); ?>" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <?php wp_head(); ?>
 </head>
 
 <body <?php body_class(); ?>>
-
-<header>
-<nav class="navbar navbar-expand-md" role="navigation">
-    <div class="container">
-        <a class="navbar-brand" href="<?php echo site_url(); ?>">Brand</a>
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-controls="bs-example-navbar-collapse-1" aria-expanded="false" aria-label="Toggle navigation">
-            ☰
-        </button>
-        <?php
+  <header class="bg-red-300">
+    <nav class="max-w-4xl mx-auto mb-5 px-4">
+      <h1 class="text-3xl py-10">
+        <a href="<?php echo get_home_url(); ?>" class="hover:text-blue-500"><?php echo get_bloginfo( 'name' ); ?></a>
+      </h1>
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <?php
         wp_nav_menu(array(
             'theme_location'  => 'header',
             'depth'              => 2, // 1 = no dropdowns, 2 = with dropdowns.
@@ -37,7 +28,5 @@
             //   'fallback_cb'     => 'WP_Bootstrap_Navwalker::fallback',
             //   'walker'          => new WP_Bootstrap_Navwalker(),
         )); ?>
-    </div>
-</nav>
-
-</header>
+    </nav>
+  </header>

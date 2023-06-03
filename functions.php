@@ -1,24 +1,24 @@
 <?php
-function RajtechnologiesWP_enqueue()
-{
-    wp_enqueue_style('bootstrap', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css');
-    if ($_SERVER['SERVER_NAME'] != 'localhost') {
-        wp_enqueue_style('style', get_template_directory_uri() . '/style.min.css');
-    } else {
-        wp_enqueue_style('style', get_template_directory_uri() . '/style.css');
-    }
-    wp_enqueue_script('customjs', get_template_directory_uri() . '/assets/js/custom.min.js', array('jquery'), '', true);
-    wp_enqueue_style('Montserrat', "https://fonts.googleapis.com/css?family=Montserrat:700|Montserrat:normal|Montserrat:300");
-    wp_enqueue_style('fontawesome', 'https://use.fontawesome.com/releases/v5.2.0/css/all.css');
-    wp_enqueue_script('bootstrapcdn', 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js', array('jquery'), '', true);
-}
 add_action('wp_enqueue_scripts', 'RajtechnologiesWP_enqueue');
 
-add_theme_support('title-tag');
-add_theme_support('post-thumbnails');
+add_action('after_setup_theme', 'rajtechnologiesWP_after_setup_theme');
+
 register_nav_menus(array(
-    'header' => 'Custom Primary Menu',
+  'header' => 'Custom Primary Menu',
 ));
+
+function rajtechnologiesWP_after_setup_theme()
+{
+  add_theme_support('title-tag');
+  add_theme_support('post-thumbnails');
+}
+
+function RajtechnologiesWP_enqueue()
+{
+  wp_enqueue_script('ourmainjs', get_theme_file_uri('/build/index.js'), array('wp-element'), '1.0', true);
+  wp_enqueue_style('ourmaincss', get_theme_file_uri('/build/index.css'));
+}
+
 function rajtechnologiesWP_widgets_init()
 {
     register_sidebar(array(
